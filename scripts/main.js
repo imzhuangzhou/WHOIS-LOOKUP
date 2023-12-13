@@ -38,8 +38,31 @@ function validateInput(domain) {
   
   function displayResults(data) {
     const resultsContainer = document.getElementById('results');
-    const formattedData = JSON.stringify(data, null, 2);
-    resultsContainer.innerHTML = `<code>${formattedData}</code>`;
+  
+    // 提取感兴趣的信息
+    const availability = data.available ? '可用' : '不可用';
+    const registrar = extractValue(data.info, 'Registrar');
+    const creationDate = extractValue(data.info, 'Creation Date');
+    const expiryDate = extractValue(data.info, 'Registry Expiry Date');
+    const domainStatus = extractValue(data.info, 'Domain Status');
+  
+    // 格式化显示信息
+    const formattedInfo = `
+      <strong>可用性:</strong> ${availability}<br>
+      <strong>注册商:</strong> ${registrar}<br>
+      <strong>注册日期:</strong> ${creationDate}<br>
+      <strong>过期日期:</strong> ${expiryDate}<br>
+      <strong>域名状态:</strong> ${domainStatus}
+    `;
+  
+    // 显示格式化的信息
+    resultsContainer.innerHTML = formattedInfo;
+  }
+  
+  // 从 WHOIS 数据中提取特定字段的值
+  function extractValue(whoisData, fieldName) {
+    const match = whoisData.match(new RegExp(`${fieldName}:\\s*([^\r\n]+)`));
+    return match ? match[1].trim() : 'N/A';
   }
   
   
