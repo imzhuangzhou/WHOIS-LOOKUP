@@ -36,11 +36,12 @@ function validateInput(domain) {
     }
   }
   
-  
   function displayResults(data) {
     const resultsContainer = document.getElementById('results');
-    resultsContainer.innerHTML = JSON.stringify(data, null, 2);
+    const formattedData = JSON.stringify(data, null, 2);
+    resultsContainer.innerHTML = `<code>${formattedData}</code>`;
   }
+  
   
   function displayError(message) {
     const errorContainer = document.getElementById('error');
