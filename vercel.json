@@ -1,0 +1,10 @@
+{
+    "routes": [
+      {
+        "src": "/whois-proxy/(.*)",
+        "dest": "https://whois.freeaiapi.xyz/$1",
+        "methods": ["GET"]
+      }
+    ]
+  }
+  
