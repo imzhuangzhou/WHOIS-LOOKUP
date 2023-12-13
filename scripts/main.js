@@ -13,6 +13,9 @@ function validateInput(domain) {
   
       showLoading();
   
+      // 清空之前的错误信息
+      displayError('');
+  
       fetch(url)
         .then(response => {
           hideLoading();
@@ -28,9 +31,11 @@ function validateInput(domain) {
           displayError(`发生错误: ${error.message}`);
         });
     } else {
+      // 清空之前的错误信息
       displayError('请输入有效的域名。');
     }
   }
+  
   
   function displayResults(data) {
     const resultsContainer = document.getElementById('results');
