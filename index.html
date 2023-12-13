@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>域名 WHOIS 查询</title>
+  <link rel="stylesheet" href="styles/style.css">
+  <script src="scripts/main.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <h1>域名 WHOIS 查询</h1>
+
+    <form id="whoisForm">
+      <label for="domain">请输入域名：</label>
+      <input type="text" id="domain" placeholder="example.com" required>
+      <button type="submit">查询</button>
+    </form>
+
+    <!-- Loading 状态 -->
+    <div id="loading" class="loading" style="display: none;">查询中...</div>
+
+    <!-- 错误信息显示 -->
+    <div id="error" class="error"></div>
+
+    <h2>查询结果：</h2>
+    <pre id="results" class="results"></pre>
+  </div>
+</body>
+</html>
